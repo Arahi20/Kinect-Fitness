@@ -1,0 +1,66 @@
+{
+  "window": {
+    "width": 1920,
+    "height": 1080,
+    "title": "Kinect Fitness Playground"
+  },
+  "visual_effects": {
+    "blur_enabled": true,
+    "blur_radius": 15
+  },
+  "colors": {
+    "background": [0, 0, 0],
+    "text": [255, 255, 255],
+    "holding_text": [255, 255, 0],
+    "button_text": [255, 255, 255],
+    "start_button": [0, 255, 0],
+    "quit_button": [255, 0, 0],
+    "back_button": [255, 165, 0],
+    "exercise_button": [0, 150, 255],
+    "free_mode_button": [255, 255, 0],
+    "leaderboard_button": [255, 215, 0],
+    "skeleton_bones": [0, 255, 0],
+    "skeleton_joints": [255, 0, 0]
+  },
+  "buttons": {
+    "border_width": 2,
+    "start": {
+      "rect": [760, 380, 400, 100]
+    },
+    "leaderboard": {
+      "rect": [760, 520, 400, 100]
+    },
+    "quit": {
+      "rect": [760, 660, 400, 100]
+    },
+    "back": {
+      "rect": [1550, 950, 200, 80]
+    }
+  },
+  "exercises": {
+    "squats": {
+      "rect": [460, 400, 300, 80]
+    },
+    "jumping_jacks": {
+      "rect": [810, 400, 300, 80]
+    },
+    "free_mode": {
+      "rect": [635, 540, 300, 80]
+    }
+  },
+  "fonts": {
+    "font_name": "Arial",
+    "title_size": 72,
+    "main_size": 50,
+    "medium_size": 36,
+    "small_size": 24
+  },
+  "timing": {
+    "hold_time": 1.5,
+    "fps": 60
+  },
+  "skeleton": {
+    "bone_thickness": 4,
+    "joint_radius": 5
+  }
+}

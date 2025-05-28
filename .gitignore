@@ -1,0 +1,15 @@
+__pycache__/app.cpython-35.pyc
+__pycache__/button.cpython-35.pyc
+__pycache__/kinect_manager.cpython-35.pyc
+__pycache__/skeleton_renderer.cpython-35.pyc
+gui/__pycache__/base_menu.cpython-35.pyc
+gui/__pycache__/exercise_menu.cpython-35.pyc
+gui/__pycache__/exercise_runner.cpython-35.pyc
+gui/__pycache__/main_menu.cpython-35.pyc
+__pycache__/blur_effect.cpython-35.pyc
+exercises/__pycache__/__init__.cpython-35.pyc
+.gitignore
+exercises/__pycache__/base_exercises.cpython-35.pyc
+exercises/__pycache__/squats.cpython-35.pyc
+exercises/__pycache__/jumping_jacks.cpython-35.pyc
+gui/__pycache__/__init__.cpython-35.pyc
