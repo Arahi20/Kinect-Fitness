@@ -15,6 +15,7 @@ class ExerciseMenu(BaseMenu):
         main_size = fonts_cfg.get("main_size", 50)
         medium_size = fonts_cfg.get("medium_size", 36)
         button_border_width = buttons_cfg.get("border_width", 2)
+        min_font_size = buttons_cfg.get("min_font_size", 14)
 
         self.medium_font = pygame.font.SysFont(font_name, medium_size)
         self.exercise_buttons = []
@@ -25,6 +26,7 @@ class ExerciseMenu(BaseMenu):
             "text": "Squats",
             "font_name": font_name,
             "font_size": medium_size,
+            "min_font_size": min_font_size,
             "text_color": colors_cfg.get("exercise_button", [0, 150, 255]),
             "bg_color": colors_cfg.get("background", [0, 0, 0]),
             "border_color": colors_cfg.get("button_text", [255, 255, 255]),
@@ -40,6 +42,7 @@ class ExerciseMenu(BaseMenu):
             "text": "Jumping Jacks",
             "font_name": font_name,
             "font_size": medium_size,
+            "min_font_size": min_font_size,
             "text_color": colors_cfg.get("exercise_button", [0, 150, 255]),
             "bg_color": colors_cfg.get("background", [0, 0, 0]),
             "border_color": colors_cfg.get("button_text", [255, 255, 255]),
@@ -49,9 +52,21 @@ class ExerciseMenu(BaseMenu):
         jumping_jacks_button.action = "jumping_jacks"
         self.exercise_buttons.append(jumping_jacks_button)
 
-        jumping_jacks_button = Button(jumping_jacks_button_config)
-        jumping_jacks_button.action = "jumping_jacks"
-        self.exercise_buttons.append(jumping_jacks_button)
+        bicep_curls_cfg = exercises_cfg.get("bicep_curls", {})
+        bicep_curls_button_config = {
+            "rect": bicep_curls_cfg.get("rect"),
+            "text": "Bicep Curls",
+            "font_name": font_name,
+            "font_size": medium_size,
+            "min_font_size": min_font_size,
+            "text_color": colors_cfg.get("exercise_button", [0, 150, 255]),
+            "bg_color": colors_cfg.get("background", [0, 0, 0]),
+            "border_color": colors_cfg.get("button_text", [255, 255, 255]),
+            "border_width": button_border_width,
+        }
+        bicep_curls_button = Button(bicep_curls_button_config)
+        bicep_curls_button.action = "bicep_curls"
+        self.exercise_buttons.append(bicep_curls_button)
 
         free_mode_cfg = exercises_cfg.get("free_mode", {})
         free_mode_button_config = {
@@ -59,6 +74,7 @@ class ExerciseMenu(BaseMenu):
             "text": "Free Mode",
             "font_name": font_name,
             "font_size": medium_size,
+            "min_font_size": min_font_size,
             "text_color": colors_cfg.get("free_mode_button", [255, 255, 0]),
             "bg_color": colors_cfg.get("background", [0, 0, 0]),
             "border_color": colors_cfg.get("button_text", [255, 255, 255]),
@@ -74,6 +90,7 @@ class ExerciseMenu(BaseMenu):
             "text": "Back",
             "font_name": font_name,
             "font_size": fonts_cfg.get("small_size", 24),
+            "min_font_size": min_font_size,
             "text_color": colors_cfg.get("back_button", [255, 165, 0]),
             "bg_color": colors_cfg.get("background", [0, 0, 0]),
             "border_color": colors_cfg.get("button_text", [255, 255, 255]),

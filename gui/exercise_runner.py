@@ -15,12 +15,16 @@ class ExerciseRunner(BaseMenu):
         elif exercise_type == "jumping_jacks":
             from exercises.jumping_jacks import JumpingJacksExercise
             self.exercise_detector = JumpingJacksExercise(config)
+        elif exercise_type == "bicep_curls":
+            from exercises.bicep_curls import BicepCurlsExercise
+            self.exercise_detector = BicepCurlsExercise(config)
 
         colors_cfg = config.get("colors", {})
         buttons_cfg = config.get("buttons", {})
         fonts_cfg = config.get("fonts", {})
         font_name = fonts_cfg.get("font_name", "Arial")
         button_border_width = buttons_cfg.get("border_width", 2)
+        min_font_size = buttons_cfg.get("min_font_size", 14)
 
         back_button_cfg = buttons_cfg.get("back", {})
         back_button_config = {
@@ -28,6 +32,7 @@ class ExerciseRunner(BaseMenu):
             "text": "Back",
             "font_name": font_name,
             "font_size": fonts_cfg.get("small_size", 24),
+            "min_font_size": min_font_size,
             "text_color": colors_cfg.get("back_button", [255, 165, 0]),
             "bg_color": colors_cfg.get("background", [0, 0, 0]),
             "border_color": colors_cfg.get("button_text", [255, 255, 255]),
@@ -41,6 +46,7 @@ class ExerciseRunner(BaseMenu):
             "squats": "Squats Challenge",
             "pushups": "Push-ups Challenge",
             "jumping_jacks": "Jumping Jacks Challenge",
+            "bicep_curls": "Bicep Curls Challenge",
             "free_mode": "Free Mode - Move Around!"
         }
         self.current_title = self.exercise_titles.get(self.exercise_type, "Exercise Mode")
@@ -93,6 +99,25 @@ class ExerciseRunner(BaseMenu):
                 status_text = "Arms: {} | Legs: {}".format(arms_status, legs_status)
                 status_surface = self.small_font.render(status_text, True, (255, 255, 0))
                 surface.blit(status_surface, (50, 270))
+
+            if 'avg_hand_shoulder_distance' in progress:
+                avg_distance_text = "Avg Hand-Shoulder: {}m".format(progress['avg_hand_shoulder_distance'])
+                avg_surface = self.small_font.render(avg_distance_text, True, (255, 255, 255))
+                surface.blit(avg_surface, (50, 210))
+
+                left_text = "Left: {}m".format(progress['left_hand_shoulder_distance'])
+                left_color = (0, 255, 0) if progress['left_hand_shoulder_distance'] < progress['curled_threshold'] else (255, 255, 255)
+                left_surface = self.small_font.render(left_text, True, left_color)
+                surface.blit(left_surface, (50, 240))
+
+                right_text = "Right: {}m".format(progress['right_hand_shoulder_distance'])
+                right_color = (0, 255, 0) if progress['right_hand_shoulder_distance'] < progress['curled_threshold'] else (255, 255, 255)
+                right_surface = self.small_font.render(right_text, True, right_color)
+                surface.blit(right_surface, (200, 240))
+
+                curl_status = "CURLED" if progress['is_curled'] else "EXTENDED"
+                curl_surface = self.small_font.render("Position: {}".format(curl_status), True, (255, 255, 0))
+                surface.blit(curl_surface, (50, 270))
 
         self.back_button.draw(surface)
         self.draw_hold_indicator(surface)

@@ -52,8 +52,11 @@
     "jumping_jacks": {
       "rect": [810, 400, 300, 80]
     },
+    "bicep_curls": {
+      "rect": [635, 500, 300, 80]
+    },
     "free_mode": {
-      "rect": [635, 540, 300, 80]
+      "rect": [635, 600, 300, 80]
     }
   },
   "heart_rate": {
