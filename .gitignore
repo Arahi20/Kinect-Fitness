@@ -13,3 +13,5 @@ exercises/__pycache__/base_exercises.cpython-35.pyc
 exercises/__pycache__/squats.cpython-35.pyc
 exercises/__pycache__/jumping_jacks.cpython-35.pyc
 gui/__pycache__/__init__.cpython-35.pyc
+heartrate/__pycache__/heart_rate_detector.cpython-35.pyc
+heartrate/__pycache__/heart_rate_monitor.cpython-35.pyc

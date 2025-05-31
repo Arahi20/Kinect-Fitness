@@ -5,7 +5,7 @@
     "title": "Kinect Fitness Playground"
   },
   "visual_effects": {
-    "blur_enabled": true,
+    "blur_enabled": false,
     "blur_radius": 15
   },
   "colors": {
@@ -19,22 +19,30 @@
     "exercise_button": [0, 150, 255],
     "free_mode_button": [255, 255, 0],
     "leaderboard_button": [255, 215, 0],
+    "heart_rate_button": [255, 100, 150],
     "skeleton_bones": [0, 255, 0],
     "skeleton_joints": [255, 0, 0]
   },
   "buttons": {
     "border_width": 2,
+    "min_font_size": 14,
     "start": {
-      "rect": [760, 380, 400, 100]
+      "rect": [760, 320, 400, 100]
+    },
+    "heart_rate": {
+      "rect": [760, 440, 400, 100]
     },
     "leaderboard": {
-      "rect": [760, 520, 400, 100]
+      "rect": [760, 560, 400, 100]
     },
     "quit": {
-      "rect": [760, 660, 400, 100]
+      "rect": [760, 680, 400, 100]
     },
     "back": {
-      "rect": [1550, 950, 200, 80]
+      "rect": [1550, 800, 200, 80]
+    },
+    "hr_start": {
+      "rect": [200, 800, 300, 80]
     }
   },
   "exercises": {
@@ -47,6 +55,15 @@
     "free_mode": {
       "rect": [635, 540, 300, 80]
     }
+  },
+  "heart_rate": {
+    "recording_time": 30,
+    "countdown_time": 5,
+    "no_detection_timeout": 15,
+    "min_hr": 50,
+    "max_hr": 180,
+    "fps": 30,
+    "max_samples": 900
   },
   "fonts": {
     "font_name": "Arial",

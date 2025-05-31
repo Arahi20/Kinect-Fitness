@@ -3,3 +3,5 @@ numpy==1.18.5
 pygame==2.0.3
 pykinect2==0.1.0
 Pillow==6.2.2
+opencv-python==4.5.5.64
+scipy==1.7.3
