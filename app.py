@@ -5,6 +5,7 @@ from gui.main_menu import MainMenu
 from gui.exercise_menu import ExerciseMenu
 from gui.exercise_runner import ExerciseRunner
 from heartrate.heart_rate_monitor import HeartRateMonitor
+from leaderboard.leaderboard_render import LeaderboardRender
 
 class KinectApp:
     def __init__(self, config):
@@ -34,6 +35,8 @@ class KinectApp:
             self.current_menu = ExerciseRunner(self.kinect_manager, self.config, exercise_type)
         elif menu_type == "heart_rate":
             self.current_menu = HeartRateMonitor(self.kinect_manager, self.config)
+        elif menu_type == "leaderboard":
+            self.current_menu = LeaderboardRender(self.kinect_manager, self.config)
         else:
             print("Unknown menu type: {}".format(menu_type))
             return
@@ -61,10 +64,10 @@ class KinectApp:
             self.switch_to_menu("heart_rate")
         elif action == "back":
             self.go_back()
-        elif action in ["squats", "pushups", "jumping_jacks", "bicep_curls", "free_mode"]:
+        elif action in ["squats", "pushups", "jumping_jacks", "bicep_curls", "arm_raises", "free_mode"]:
             self.switch_to_menu("exercise_run", exercise_type=action)
         elif action == "leaderboard":
-            print("Leaderboard not implemented yet!")
+            self.switch_to_menu("leaderboard")
         return True
 
     def run(self):

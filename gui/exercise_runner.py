@@ -2,12 +2,15 @@ import pygame
 from gui.base_menu import BaseMenu
 from button import Button
 from skeleton_renderer import SkeletonRenderer
+from leaderboard.leaderboard_manager import LeaderboardManager
 
 class ExerciseRunner(BaseMenu):
     def __init__(self, kinect_manager, config, exercise_type):
         super().__init__(kinect_manager, config)
         self.exercise_type = exercise_type
         self.skeleton_renderer = SkeletonRenderer(kinect_manager, config)
+        self.leaderboard = LeaderboardManager()
+        self.session_recorded = False
         self.exercise_detector = None
         if exercise_type == "squats":
             from exercises.squats import SquatsExercise
@@ -18,6 +21,9 @@ class ExerciseRunner(BaseMenu):
         elif exercise_type == "bicep_curls":
             from exercises.bicep_curls import BicepCurlsExercise
             self.exercise_detector = BicepCurlsExercise(config)
+        elif exercise_type == "arm_raises":
+            from exercises.arm_raises import ArmRaisesExercise
+            self.exercise_detector = ArmRaisesExercise(config)
 
         colors_cfg = config.get("colors", {})
         buttons_cfg = config.get("buttons", {})
@@ -47,6 +53,7 @@ class ExerciseRunner(BaseMenu):
             "pushups": "Push-ups Challenge",
             "jumping_jacks": "Jumping Jacks Challenge",
             "bicep_curls": "Bicep Curls Challenge",
+            "arm_raises": "Arm Raises Challenge",
             "free_mode": "Free Mode - Move Around!"
         }
         self.current_title = self.exercise_titles.get(self.exercise_type, "Exercise Mode")
@@ -54,6 +61,13 @@ class ExerciseRunner(BaseMenu):
     def update(self, surface):
         hand_pos = self.get_hand_position()
         action = self.handle_button_interaction(hand_pos)
+        
+        if action == "back" and self.exercise_detector and not self.session_recorded:
+            reps = self.exercise_detector.rep_count
+            if reps > 0:
+                self.leaderboard.record_session(self.exercise_type, reps, self.exercise_detector)
+                self.session_recorded = True
+        
         if self.exercise_detector:
             bodies = self.kinect_manager.get_bodies()
             if bodies is not None:
@@ -118,6 +132,25 @@ class ExerciseRunner(BaseMenu):
                 curl_status = "CURLED" if progress['is_curled'] else "EXTENDED"
                 curl_surface = self.small_font.render("Position: {}".format(curl_status), True, (255, 255, 0))
                 surface.blit(curl_surface, (50, 270))
+
+            if 'avg_hand_shoulder_height' in progress:
+                avg_height_text = "Avg Hand Height: {}m".format(progress['avg_hand_shoulder_height'])
+                avg_surface = self.small_font.render(avg_height_text, True, (255, 255, 255))
+                surface.blit(avg_surface, (50, 210))
+
+                left_text = "Left: {}m".format(progress['left_hand_shoulder_height'])
+                left_color = (0, 255, 0) if progress['left_hand_shoulder_height'] > progress['raised_threshold'] else (255, 255, 255)
+                left_surface = self.small_font.render(left_text, True, left_color)
+                surface.blit(left_surface, (50, 240))
+
+                right_text = "Right: {}m".format(progress['right_hand_shoulder_height'])
+                right_color = (0, 255, 0) if progress['right_hand_shoulder_height'] > progress['raised_threshold'] else (255, 255, 255)
+                right_surface = self.small_font.render(right_text, True, right_color)
+                surface.blit(right_surface, (200, 240))
+
+                raise_status = "RAISED" if progress['are_raised'] else "LOWERED"
+                raise_surface = self.small_font.render("Position: {}".format(raise_status), True, (255, 255, 0))
+                surface.blit(raise_surface, (50, 270))
 
         self.back_button.draw(surface)
         self.draw_hold_indicator(surface)

@@ -15,3 +15,7 @@ exercises/__pycache__/jumping_jacks.cpython-35.pyc
 gui/__pycache__/__init__.cpython-35.pyc
 heartrate/__pycache__/heart_rate_detector.cpython-35.pyc
 heartrate/__pycache__/heart_rate_monitor.cpython-35.pyc
+leaderboard/__pycache__/leaderboard_manager.cpython-35.pyc
+leaderboard/__pycache__/leaderboard_render.cpython-35.pyc
+exercises/__pycache__/arm_raises.cpython-35.pyc
+leaderboard_data.json

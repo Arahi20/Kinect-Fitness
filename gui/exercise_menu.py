@@ -22,7 +22,7 @@ class ExerciseMenu(BaseMenu):
 
         squats_cfg = exercises_cfg.get("squats", {})
         squats_button_config = {
-            "rect": squats_cfg.get("rect"),
+            "rect": [535, 350, 250, 80],
             "text": "Squats",
             "font_name": font_name,
             "font_size": medium_size,
@@ -38,7 +38,7 @@ class ExerciseMenu(BaseMenu):
 
         jumping_jacks_cfg = exercises_cfg.get("jumping_jacks", {})
         jumping_jacks_button_config = {
-            "rect": jumping_jacks_cfg.get("rect"),
+            "rect": [835, 350, 250, 80],
             "text": "Jumping Jacks",
             "font_name": font_name,
             "font_size": medium_size,
@@ -54,7 +54,7 @@ class ExerciseMenu(BaseMenu):
 
         bicep_curls_cfg = exercises_cfg.get("bicep_curls", {})
         bicep_curls_button_config = {
-            "rect": bicep_curls_cfg.get("rect"),
+            "rect": [1135, 350, 250, 80],
             "text": "Bicep Curls",
             "font_name": font_name,
             "font_size": medium_size,
@@ -68,9 +68,25 @@ class ExerciseMenu(BaseMenu):
         bicep_curls_button.action = "bicep_curls"
         self.exercise_buttons.append(bicep_curls_button)
 
+        arm_raises_cfg = exercises_cfg.get("arm_raises", {})
+        arm_raises_button_config = {
+            "rect": [660, 480, 250, 80],
+            "text": "Arm Raises",
+            "font_name": font_name,
+            "font_size": medium_size,
+            "min_font_size": min_font_size,
+            "text_color": colors_cfg.get("exercise_button", [0, 150, 255]),
+            "bg_color": colors_cfg.get("background", [0, 0, 0]),
+            "border_color": colors_cfg.get("button_text", [255, 255, 255]),
+            "border_width": button_border_width,
+        }
+        arm_raises_button = Button(arm_raises_button_config)
+        arm_raises_button.action = "arm_raises"
+        self.exercise_buttons.append(arm_raises_button)
+
         free_mode_cfg = exercises_cfg.get("free_mode", {})
         free_mode_button_config = {
-            "rect": free_mode_cfg.get("rect"),
+            "rect": [960, 480, 250, 80],
             "text": "Free Mode",
             "font_name": font_name,
             "font_size": medium_size,
