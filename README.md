@@ -2,12 +2,6 @@
 ## Interactive fitness using Microsoft Kinect!
 Kinect fitness playground is a comprehensive fitness application that utilises the Microsoft Xbox kinect V2 sensor to track body movements,provide exercise feedback and monitor workout progress. This project aims to highlight the utility of the kinect sensor and demonstrate how it can be adapted for a wide range of usecases.
 
--Real-time skeleton tracking
--Multiple exercises with form feedback
--Heart rate monitoring (Experiemental using rPPG)
--Leaderboard to allow for personal performance tracking
-
-
 ![Screenshot](screenshots/Main_Menu.png)
 
 ## Features
