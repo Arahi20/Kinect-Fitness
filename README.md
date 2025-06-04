@@ -6,6 +6,8 @@ Kinect fitness playground is a comprehensive fitness application that utilises t
 -Multiple exercises with form feedback
 -Heart rate monitoring (Experiemental using rPPG)
 -Leaderboard to allow for personal performance tracking
+
+
 ![Screenshot](screenshots/Main_Menu.png)
 
 ## Features
