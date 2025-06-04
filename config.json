@@ -5,8 +5,8 @@
     "title": "Kinect Fitness Playground"
   },
   "visual_effects": {
-    "blur_enabled": false,
-    "blur_radius": 15
+    "blur_enabled": true,
+    "blur_radius": 25
   },
   "colors": {
     "background": [0, 0, 0],
@@ -30,13 +30,13 @@
       "rect": [760, 320, 400, 100]
     },
     "heart_rate": {
-      "rect": [760, 440, 400, 100]
+      "rect": [760, 480, 400, 100]
     },
     "leaderboard": {
-      "rect": [760, 560, 400, 100]
+      "rect": [760, 640, 400, 100]
     },
     "quit": {
-      "rect": [760, 680, 400, 100]
+      "rect": [760, 800, 400, 100]
     },
     "back": {
       "rect": [1550, 800, 200, 80]
@@ -47,21 +47,24 @@
   },
   "exercises": {
     "squats": {
-      "rect": [460, 400, 300, 80]
+      "rect": [360, 350, 250, 80]
     },
     "jumping_jacks": {
-      "rect": [810, 400, 300, 80]
+      "rect": [660, 350, 250, 80]
     },
     "bicep_curls": {
-      "rect": [635, 500, 300, 80]
+      "rect": [960, 350, 250, 80]
+    },
+    "arm_raises": {
+      "rect": [485, 480, 250, 80]
     },
     "free_mode": {
-      "rect": [635, 600, 300, 80]
+      "rect": [785, 480, 250, 80]
     }
   },
   "heart_rate": {
     "recording_time": 30,
-    "countdown_time": 5,
+    "countdown_time": 10,
     "no_detection_timeout": 15,
     "min_hr": 50,
     "max_hr": 180,
