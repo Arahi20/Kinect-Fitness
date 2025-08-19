@@ -5,7 +5,7 @@
     "title": "Kinect Fitness Playground"
   },
   "visual_effects": {
-    "blur_enabled": true,
+    "blur_enabled": false,
     "blur_radius": 25
   },
   "colors": {
